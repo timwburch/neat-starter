@@ -2,9 +2,8 @@
 title: Banana
 thumbnail: /static/img/photo-by-mike-dorner-sf_1zda1yfw-.jpg
 tags:
-  - left
-  - center
-  - right
+  - config.yml
+  - from
 description: A banana
 author: tim
 date: 2020-09-01
