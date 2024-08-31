@@ -2,12 +2,7 @@
 title: This is my second post
 thumbnail: /static/img/photo-by-mike-dorner-sf_1zda1yfw-.jpg
 tags:
-  - created
-description: Bring to the table win-win survival strategies to ensure proactive
-  domination. At the end of the day, going forward, a new normal that has
-  evolved from generation X is on the runway heading towards a streamlined cloud
-  solution.
-author: Surjith S M
+  - Photography
 date: 2020-09-02
 ---
 

@@ -8,6 +8,12 @@ backend:
 media_folder: "src/static/img"
 public_folder: "/static/img"
 
+# media_library:
+#   name: cloudinary
+#   config:
+#     cloud_name: eleventytest
+#     api_key: 229558939792972
+
 # Please run "npx netlify-cms-proxy-server" for local backend
 local_backend: true
 # publish_mode: editorial_workflow
@@ -33,11 +39,12 @@ collections:
         name: "tags"
         multiple: true
         create: true
-        options: ["Tags", "created", "from", "config.yml"]
-      - { label: "Description", name: "description", widget: "string" }
-      - { label: "Author", name: "author", widget: "string" }
+        options: ["Home", "Branding", "Web Design", "Photography", "Print", "Social Media"]
+      # - { label: "Description", name: "description", widget: "string" }
+      # - { label: "Author", name: "author", widget: "string" }
       - { label: "Publish Date", name: "date", widget: "datetime" }
       - { label: "Body", name: "body", widget: "markdown" }
+      - { label: "Display Link", name: "hasLink", widget: "boolean", default: false}
   - label: "Settings"
     name: "settings"
     editor:
