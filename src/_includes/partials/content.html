@@ -12,4 +12,11 @@
 
     {% endif %}
 
-</div>
+    <ol>
+        {% set taglist = collections[home] %}
+        {% for post in taglist | reverse %}
+            <li><a href="{{ post.url }}">{{ post.data.title }}</a></li>
+        {% endfor %}
+    </ol>
+
+</div>  

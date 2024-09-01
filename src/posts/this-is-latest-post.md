@@ -6,6 +6,7 @@ description: Bring to the table win-win survival strategies to ensure proactive
   solution.
 thumbnail: https://images.unsplash.com/photo-1468233748640-b31327627610?q=80&w=3402&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
 tags:
+  - Home
   - Photography
   - Print
 date: 2024-08-31T10:48:56.812Z
