@@ -5,13 +5,7 @@ prism: true
 
 <div class="container mt-6 px-6">
   <div class="pb-5 mb-5 border-b border-gray-100">
-    <h1 class="font-bold text-5xl">{{title}}</h1>
-    <p class="text-center text-base leading-6 font-medium text-gray-500">
-      <time>
-        {{ date | readableDate }} by
-        <a>{{ author }}</a>
-      </time>
-    </p>
+    <h1 class="font-bold text-5xl">{{title}}</h1>    
   </div>
 
   <div>
@@ -21,14 +15,22 @@ prism: true
   <article class="prose prose-invert lg:prose-xl my-4 mx-auto">{{ content | safe }}</article>
 
   <section>
-    {% if tags %}
+    
     <ul class="pt-6 lg:pt-0 list-reset lg:flex justify-end flex-1 items-center">
+      <li class="justify-self-start mr-auto">
+        <p class="text-center text-base leading-6 font-medium text-gray-500">
+          <time>
+            {{ date | readableDate }}
+          </time>
+        </p>
+      </li>
+      {% if tags %}
       {% for tag in tags %}
       <li class="nav__item mr-3">
         <strong>{{ tag }}</strong>
       </li>
       {% endfor %}
+      {% endif %}
     </ul>
-    {% endif %}
   </section>
 </div>
