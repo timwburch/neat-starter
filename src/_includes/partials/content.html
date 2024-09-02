@@ -13,7 +13,7 @@
         { 
             imgSrc: '{{post.data.thumbnail}}',
             imgAlt: '{{post.data.title}}',
-            ctaUrl: {% if post.data.hasLink %}'{{ post.url }}'{% else %}''{% endif %}
+            ctaUrl: {% if post.data.hasLink %}'{{ post.url }}'{% else %}null{% endif %}
         },
     {% endfor %}
     ],            
