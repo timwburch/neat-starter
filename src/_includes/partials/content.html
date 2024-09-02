@@ -1,4 +1,16 @@
 
+<div class="py-10 lg:py-20">
+    {% if tag and pagecontent[tag].topContent %}
+        {{ pagecontent[tag].topContent  | md | safe }}
+    {% else %}
+        {{ pagecontent.homeContent.topContent | md | safe }}
+    {% endif %}
+    </div>
+    <hr />
+    <div class="pb-10">
+    Selected works
+</div>
+
 {% if tag %}
     {% set taglist = collections[ tag ] %}
 {% else %}
@@ -7,7 +19,7 @@
 
 <div x-data="{            
     // Sets the time between each slides in milliseconds
-    autoplayIntervalTime: 5000,
+    autoplayIntervalTime: 7000,
     slides: [
     {% for post in taglist | reverse %} 
         { 
@@ -68,8 +80,8 @@
         }
     },  
 }" 
+x-init="autoplay" 
 class="relative w-full overflow-hidden">
-<!-- x-init="autoplay"  -->
 
     <!-- previous button -->
     <button type="button" class="absolute left-5 top-1/2 z-20 flex rounded-full -translate-y-1/2 scale-y-125 items-center justify-center p-2 text-neutral-950 transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black active:outline-offset-0 dark:bg-neutral-950/40 dark:text-neutral-300 dark:hover:bg-neutral-950/60 dark:focus-visible:outline-white" aria-label="previous slide" x-on:click="previous()">
