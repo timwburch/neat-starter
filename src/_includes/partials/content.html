@@ -67,7 +67,9 @@
             this.touchEndX = null
         }
     },  
-}" x-init="autoplay" class="relative w-full overflow-hidden">
+}" 
+class="relative w-full overflow-hidden">
+<!-- x-init="autoplay"  -->
 
     <!-- previous button -->
     <button type="button" class="absolute left-5 top-1/2 z-20 flex rounded-full -translate-y-1/2 scale-y-125 items-center justify-center p-2 text-neutral-950 transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black active:outline-offset-0 dark:bg-neutral-950/40 dark:text-neutral-300 dark:hover:bg-neutral-950/60 dark:focus-visible:outline-white" aria-label="previous slide" x-on:click="previous()">
@@ -87,9 +89,9 @@
         <template x-for="(slide, index) in slides">
             <div x-cloak x-show="currentSlideIndex == index + 1" class="absolute inset-0" x-transition.opacity.duration.1000ms>
                 <!-- Title and description -->
-                <!-- <div class="lg:px-32 lg:py-14 absolute inset-0 z-10 flex flex-col items-center justify-end gap-2 bg-gradient-to-t from-neutral-950/85 to-transparent px-16 py-12 text-center"> -->
-                <div class="lg:px-32 lg:py-14 absolute inset-0 z-10 flex flex-col items-center justify-end gap-2 px-16 py-12 text-center">
-                    <a x-cloak x-show="slide.ctaUrl !== null" class="mt-2 cursor-pointer whitespace-nowrap rounded-md border border-white bg-transparent px-4 py-2 text-center text-xs font-medium tracking-wide text-white transition hover:opacity-75 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-onSurfaceDarkStrong active:opacity-100 active:outline-offset-0 md:text-sm" x-bind:href="slide.ctaUrl">see more</a>
+                <div class="lg:px-32 lg:py-8 px-16 py-4 absolute inset-0 z-10 flex flex-col items-center justify-end gap-2 bg-gradient-to-t from-neutral-950/35 to-transparent to-10% text-center">
+                <!-- <div class="lg:px-32 lg:py-14 absolute inset-0 z-10 flex flex-col items-center justify-end gap-2 px-16 py-12 text-center"> -->
+                    <a x-cloak x-show="slide.ctaUrl !== null" class="mt-2 cursor-pointer whitespace-nowrap rounded-md border border-transparent bg-transparent px-4 py-2 text-center text-xs font-medium tracking-wide text-white transition opacity-35 hover:opacity-75 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-onSurfaceDarkStrong active:opacity-100 active:outline-offset-0 md:text-sm" x-bind:href="slide.ctaUrl">more</a>
                 </div>
                 <img class="absolute w-full h-full inset-0 object-cover text-neutral-950 dark:text-neutral-300" x-bind:src="slide.imgSrc" x-bind:alt="slide.imgAlt" />
             </div>
