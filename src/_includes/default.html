@@ -12,23 +12,26 @@
     {% endif %}
     {% block head %}{% endblock %}
     <link rel="stylesheet" type="text/css" href="/static/css/style.css"/>
-    {% if prism == true %}
-      <link rel="stylesheet" type="text/css" href="/static/css/prism-tomorrow.css">
-    {% endif %}
   </head>
-  <body>
-    {% include "./partials/navbar.html" %}
-
-    {{ content | safe }}
-
-    {% include "./partials/footer.html" %}
+  <body class="bg-slate-950 text-neutral-50">
+    
+    <div class="lg:min-h-screen flex flex-col justify-center">
+      <div class="container mb-auto px-6">
+        {% include "./partials/head.html" %}
+        {{ content | safe }}
+      </div>
+      <div class="container px-6">
+        {% include "./partials/footer.html" %}
+      </div>
+    
+    </div>
 
     <script src="/static/js/alpine.js"></script>
 
     {% if path == "home" %}
       <!-- Netlify Identity Widget -->
       <!-- Needed only if you are using Netlify Identity feature -->
-      <script type="text/javascript" src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+      <!-- <script type="text/javascript" src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script> -->
     {% endif %}
 
   </body>

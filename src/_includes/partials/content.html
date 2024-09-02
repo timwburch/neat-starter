@@ -1,22 +1,98 @@
-<div class="w-full max-w-2xl grid grid-cols-1 lg:grid-cols-2 gap-4 my-8 px-4 lg:mx-0">
 
-    {% if clientlinks.links %}
+{% if tag %}
+    {% set taglist = collections[ tag ] %}
+{% else %}
+    {% set taglist = collections["Home"] %}
+{% endif %}
 
-        {% for item in clientlinks.links %}
-            <a href="{{item.url}}" target="_blank" class="p-5 border rounded border-gray-200 hover:border-purple-400">
-                <h3>{{item.title}}
-                    →</h3>
-                <p>{{item.desc}}</p>
-            </a>
-        {% endfor %}
+<div x-data="{            
+    // Sets the time between each slides in milliseconds
+    autoplayIntervalTime: 5000,
+    slides: [
+    {% for post in taglist | reverse %} 
+        { 
+            imgSrc: '{{post.data.thumbnail}}',
+            imgAlt: '{{post.data.title}}',
+            ctaUrl: {% if post.data.hasLink %}'{{ post.url }}'{% else %}''{% endif %}
+        },
+    {% endfor %}
+    ],            
+    currentSlideIndex: 1,
+    isPaused: false,
+    autoplayInterval: null,
+    previous() {                
+        if (this.currentSlideIndex > 1) {                    
+            this.currentSlideIndex = this.currentSlideIndex - 1                
+        } else {   
+            // If it's the first slide, go to the last slide           
+            this.currentSlideIndex = this.slides.length                
+        }            
+    },            
+    next() {                
+        if (this.currentSlideIndex < this.slides.length) {                    
+            this.currentSlideIndex = this.currentSlideIndex + 1                
+        } else {                 
+            // If it's the last slide, go to the first slide    
+            this.currentSlideIndex = 1                
+        }            
+    },    
+    autoplay() {
+        this.autoplayInterval = setInterval(() => {
+            if (! this.isPaused) {
+                this.next()
+            }
+        }, this.autoplayIntervalTime)
+    },
+    // Updates interval time   
+    setAutoplayInterval(newIntervalTime) {
+        clearInterval(this.autoplayInterval)
+        this.autoplayIntervalTime = newIntervalTime
+        this.autoplay()
+    },        
+    handleTouchStart(event) {
+        this.touchStartX = event.touches[0].clientX
+    },
+    handleTouchMove(event) {
+        this.touchEndX = event.touches[0].clientX
+    },
+    handleTouchEnd() {
+        if(this.touchEndX){
+            if (this.touchStartX - this.touchEndX > this.swipeThreshold) {
+                this.next()
+            }
+            if (this.touchStartX - this.touchEndX < -this.swipeThreshold) {
+                this.previous()
+            }
+            this.touchStartX = null
+            this.touchEndX = null
+        }
+    },  
+}" x-init="autoplay" class="relative w-full overflow-hidden">
 
-    {% endif %}
+    <!-- previous button -->
+    <button type="button" class="absolute left-5 top-1/2 z-20 flex rounded-full -translate-y-1/2 scale-y-125 items-center justify-center p-2 text-neutral-950 transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black active:outline-offset-0 dark:bg-neutral-950/40 dark:text-neutral-300 dark:hover:bg-neutral-950/60 dark:focus-visible:outline-white" aria-label="previous slide" x-on:click="previous()">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="2" class="size-8 md:size-10 pr-0.5" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
+        </svg>
+    </button>
 
-    <ol>
-        {% set taglist = collections["Home"] %}
-        {% for post in taglist | reverse %}
-            <li><a href="{{ post.url }}">{{ post.data.title }}</a></li>
-        {% endfor %}
-    </ol>
+    <!-- next button -->
+    <button type="button" class="absolute right-5 top-1/2 z-20 flex rounded-full -translate-y-1/2 scale-y-125 items-center justify-center p-2 text-neutral-950 transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black active:outline-offset-0 dark:bg-neutral-950/40 dark:text-neutral-300 dark:hover:bg-neutral-950/60 dark:focus-visible:outline-white" aria-label="next slide" x-on:click="next()">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="2" class="size-8 md:size-10 pl-0.5" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+        </svg>
+    </button>
 
-</div>  
+    <div class="relative min-h-[70svh] w-full">
+        <template x-for="(slide, index) in slides">
+            <div x-cloak x-show="currentSlideIndex == index + 1" class="absolute inset-0" x-transition.opacity.duration.1000ms>
+                <!-- Title and description -->
+                <!-- <div class="lg:px-32 lg:py-14 absolute inset-0 z-10 flex flex-col items-center justify-end gap-2 bg-gradient-to-t from-neutral-950/85 to-transparent px-16 py-12 text-center"> -->
+                <div class="lg:px-32 lg:py-14 absolute inset-0 z-10 flex flex-col items-center justify-end gap-2 px-16 py-12 text-center">
+                    <a x-cloak x-show="slide.ctaUrl !== null" class="mt-2 cursor-pointer whitespace-nowrap rounded-md border border-white bg-transparent px-4 py-2 text-center text-xs font-medium tracking-wide text-white transition hover:opacity-75 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-onSurfaceDarkStrong active:opacity-100 active:outline-offset-0 md:text-sm" x-bind:href="slide.ctaUrl">see more</a>
+                </div>
+                <img class="absolute w-full h-full inset-0 object-cover text-neutral-950 dark:text-neutral-300" x-bind:src="slide.imgSrc" x-bind:alt="slide.imgAlt" />
+            </div>
+        </template>
+    </div>
+</div>

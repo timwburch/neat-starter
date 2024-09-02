@@ -1,0 +1,12 @@
+<div class="py-10 lg:py-20">
+{% if tag and pagecontent[tag].topContent %}
+    {{ pagecontent[tag].topContent  | md | safe }}
+{% else %}
+    {{ pagecontent.homeContent.topContent | md | safe }}
+{% endif %}
+</div>
+<hr />
+<div class="pb-10">
+Selected works
+</div>
+  

@@ -13,7 +13,12 @@ prism: true
       </time>
     </p>
   </div>
-  <article class="prose lg:prose-xl my-4 mx-auto">{{ content | safe }}</article>
+
+  <div>
+    <image src="{{thumbnail}}" alt="{{title}}" />
+  </div>
+  
+  <article class="prose prose-invert lg:prose-xl my-4 mx-auto">{{ content | safe }}</article>
 
   <section>
     {% if tags %}

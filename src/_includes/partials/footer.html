@@ -1,9 +1,49 @@
-<footer class="{{ 'fixed' if path == 'home' }} bottom-0 text-center w-full py-4">
-    <small class="text-gray-500">Copyright ©
-        {{settings.name}}
-        2020. Made with ❤ by
-        <a href="{{settings.url}}" target="_blank" class="underline">{{settings.author}}</a>
-        •
-        <a href="https://github.com/surjithctly/neat-starter" class="underline" target="_blank" rel="noopener">View on Github</a>
-    </small>
+<div class="pt-10">
+    <hr />
+</div>
+<footer class="bottom-0 w-full py-4 flex flex-wrap gap-7">
+    
+    <div class="basis-5/12">
+        {% if tag and pagecontent[tag].bottomContent %}
+            {{ pagecontent[tag].bottomContent  | md | safe }}
+        {% else %}
+            {{ pagecontent.homeContent.bottomContent | md | safe }}
+        {% endif %}
+    </div>
+    <div class="basis-5/12 flex flex-col md:flex-row gap-7">
+        <div class="basis-1/3">
+            {% if settings.profilePic %}
+            <image src="{{settings.profilePic}}" target="_blank" class="" alt="{{settings.name}}" />
+            {% endif %}
+        </div>
+
+        <div class="basis-1/3 text-sm font-light text-neutral-400">
+            <h4 class="pb-5">Select clients</h4>
+            <ol>
+            {% for item in clients.items %}
+            <li>
+                <a href="{{item.url}}" target="_blank" class="">{{item.text}}</a>
+            </li>
+            {% endfor %}
+            </ol>
+        </div>
+        <div class="basis-1/3 text-sm font-light text-neutral-400">
+            <h4 class="pb-5">Contact</h4>
+            <ol>
+            {% for item in contacts.items %}
+            <li>
+                <a href="{{item.url}}" target="_blank" class="">{{item.text}}</a>
+            </li>
+            {% endfor %}
+            </ol>
+        </div>
+    </div>
+
+
+    <!-- 
+    <small class="text-gray-500 basis-full text-center">
+        Copyright <span  x-data="{ label: new Date().getFullYear() }" x-text="label" ></span> © {{settings.name}}. Made with ❤ by <a href="{{settings.url}}" target="_blank" class="underline">{{settings.author}}</a>
+        • <a href="/">Home</a>
+    </small> 
+    -->
 </footer>

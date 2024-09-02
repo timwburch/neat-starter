@@ -1,8 +1,9 @@
 ---
-title: This is my second post
-thumbnail: /static/img/photo-by-mike-dorner-sf_1zda1yfw-.jpg
+title: Natio Beauty
+thumbnail: /static/img/portfolio-tiles-03.png
 tags:
-  - Photography
+  - Web Design
+  - Social Media
 date: 2020-09-02
 ---
 

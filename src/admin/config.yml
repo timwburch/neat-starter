@@ -18,8 +18,8 @@ public_folder: "/static/img"
 local_backend: true
 # publish_mode: editorial_workflow
 collections:
-  - label: "Blog"
-    name: "blog"
+  - label: "Portfolio"
+    name: "portfolio"
     folder: "src/posts"
     create: true
     editor:
@@ -30,7 +30,6 @@ collections:
         name: "thumbnail"
         widget: "image"
         choose_url: true
-        default: "/uploads/chocolate-dogecoin.jpg"
         media_library:
           config:
             multiple: true
@@ -40,41 +39,16 @@ collections:
         multiple: true
         create: true
         options: ["Home", "Branding", "Web Design", "Photography", "Print", "Social Media"]
-      # - { label: "Description", name: "description", widget: "string" }
-      # - { label: "Author", name: "author", widget: "string" }
       - { label: "Publish Date", name: "date", widget: "datetime" }
+      - { label: "Display Link", name: "hasLink", widget: "boolean", required: false}
       - { label: "Body", name: "body", widget: "markdown" }
-      - { label: "Display Link", name: "hasLink", widget: "boolean", default: false}
+  
   - label: "Settings"
     name: "settings"
     editor:
       preview: false
     files:
-      - label: "Navigation"
-        name: "items"
-        file: "src/_data/navigation.yaml"
-        fields:
-          - label: Nav Items
-            name: items
-            widget: list
-            allow_add: false
-            collapsed: false
-            fields:
-              - { label: Title, name: text, widget: string }
-              - { label: URL, name: url, widget: string }
-      - label: "Client Links"
-        name: "links"
-        file: "src/_data/quicklinks.yaml"
-        fields:
-          - label: Nav Items
-            name: links
-            widget: list
-            collapsed: false
-            fields:
-              - { label: Title, name: title, widget: string }
-              - { label: URL, name: url, widget: string }
-              - { label: Description, name: desc, widget: string }
-      - label: "Meta Settings"
+      - label: "Settings"
         name: "settings"
         file: "src/_data/settings.yaml"
         fields:
@@ -84,9 +58,76 @@ collections:
           - label: "Profile Pic"
             name: profilePic
             widget: image
-            choose_url: true
-            media_library:
-              config:
-                multiple: false
-          - { label: Home Top Content, name: topContentMain, widget: "markdown" }
-          - { label: Home Bottom Content, name: bottomContentMain, widget: "markdown" }
+            required: false
+
+      - label: "Page Content"
+        name: "pagecontent"
+        file: "src/_data/pagecontent.yaml"
+        fields:
+          - label: "Home Content"
+            name: "homeContent"
+            widget: "object"
+            collapsed: true 
+            fields:
+              - { label: Top Content, name: topContent, widget: "markdown"}
+              - { label: Bottom Content, name: bottomContent, widget: "markdown" }
+          - label: "Branding Content"
+            name: "Branding"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: Top Content, name: topContent, widget: "markdown", required: false }
+              - { label: Bottom Content, name: bottomContent, widget: "markdown", required: false }
+          - label: "Web Design Content"
+            name: "Web Design"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: Top Content, name: topContent, widget: "markdown", required: false }
+              - { label: Bottom Content, name: bottomContent, widget: "markdown", required: false }
+          - label: "Photography Content"
+            name: "Photography"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: Top Content, name: topContent, widget: "markdown", required: false }
+              - { label: Bottom Content, name: bottomContent, widget: "markdown", required: false }
+          - label: "Print Content"
+            name: "Print"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: Top Content, name: topContent, widget: "markdown", required: false }
+              - { label: Bottom Content, name: bottomContent, widget: "markdown", required: false }
+          - label: "Social Media Content"
+            name: "Social Media"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: Top Content, name: topContent, widget: "markdown", required: false }
+              - { label: Bottom Content, name: bottomContent, widget: "markdown", required: false }
+
+      - label: "Client Links"
+        name: "clients"
+        file: "src/_data/clients.yaml"
+        fields:
+          - label: Client Links
+            name: items
+            widget: list
+            collapsed: false
+            fields:
+              - { label: Title, name: text, widget: string }
+              - { label: URL, name: url, widget: string }
+
+      - label: "Contact Links"
+        name: "contact"
+        file: "src/_data/contacts.yaml"
+        fields:
+          - label: Contact Link
+            name: items
+            widget: list
+            collapsed: false
+            fields:
+              - { label: Title, name: text, widget: string }
+              - { label: URL, name: url, widget: string }
+      
