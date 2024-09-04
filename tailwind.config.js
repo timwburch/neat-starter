@@ -9,7 +9,7 @@ module.exports = {
     extend: {
       colors: {},
       fontFamily: {
-        playfair: ['"Playfair Display"', ...defaultTheme.fontFamily.sans]
+        cormorant: ['"Cormorant"', ...defaultTheme.fontFamily.sans]
       },
     },
   },
