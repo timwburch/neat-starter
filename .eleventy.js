@@ -26,6 +26,13 @@ module.exports = function (eleventyConfig) {
     return markdown.render(rawString);
   });
 
+  eleventyConfig.addFilter("exclude", (collection, stringToFilter) => {
+    if (!stringToFilter) {
+      return collection
+    }
+    return (collection ?? []).filter(item => item !== stringToFilter)
+  })
+
   // Syntax Highlighting for Code blocks
   eleventyConfig.addPlugin(syntaxHighlight);
 

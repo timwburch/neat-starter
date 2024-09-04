@@ -11,10 +11,6 @@ hasLink: true
 ---
 Leverage agile frameworks to provide a robust synopsis for high level overviews. Iterative approaches to corporate strategy foster collaborative thinking to further the overall value proposition. Organically grow the holistic world view of disruptive innovation via workplace diversity and empowerment.
 
-Bring to the table win-win survival strategies to ensure proactive domination. At the end of the day, going forward, a new normal that has evolved from generation X is on the runway heading towards a streamlined cloud solution. User generated content in real-time will have multiple touchpoints for offshoring.
-
-## h2 Heading
-
 ### h3 Heading
 
 #### h4 Heading
@@ -74,42 +70,13 @@ Start numbering with offset:
 57. foo
 58. bar
 
-## Code
-
-Inline `code`
-
-Indented code
-
-```
-// Some comments
-line 1 of code
-line 2 of code
-line 3 of code
-```
-
-Block code "fences"
-
-```
-Sample text here...
-```
-
-Syntax highlighting
-
-```js
-var foo = function (bar) {
-  return bar++;
-};
-
-console.log(foo(5));
-```
 
 ## Tables
 
-| Option | Description                                                               |
-| ------ | ------------------------------------------------------------------------- |
-| data   | path to data files to supply the data that will be passed into templates. |
-| engine | engine to be used for processing templates. Handlebars is the default.    |
-| ext    | extension to be used for dest files.                                      |
+| Option | Description                   |                                           |
+| ------ | ----------------------------- | ----------------------------------------- |
+| data   | path to data files to supply  | data that will be passed into templates.  |
+| engine | engine to be used for processing | templates. Handlebars is the default.  |
 
 ## Links
 

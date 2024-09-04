@@ -16,16 +16,19 @@ prism: true
 
   <section>
     
-    <ul class="pt-6 lg:pt-0 list-reset lg:flex justify-end flex-1 items-center">
+    <div class=" border-y-2 border-gray-500 p-4 text-center">
+      <a class="px-6 py-4 text-white opacity-50 hover:opacity-100 transition" href="/">Return home.</a>
+    </div>
+    <ul class="pt-6 lg:pt-4 list-reset lg:flex justify-end flex-1 items-center text-base leading-6 text-gray-500">
       <li class="justify-self-start mr-auto">
-        <p class="text-center text-base leading-6 font-medium text-gray-500">
+        <p class="">
           <time>
             {{ date | readableDate }}
           </time>
         </p>
       </li>
       {% if tags %}
-      {% for tag in tags %}
+      {% for tag in tags | exclude('post') %}
       <li class="nav__item mr-3">
         <strong>{{ tag }}</strong>
       </li>
