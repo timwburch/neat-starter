@@ -4,6 +4,7 @@ thumbnail: /static/img/portfolio-tiles-03.png
 tags:
   - Web Design
   - Social Media
+  - Home
 date: 2019-03-31T13:00:00.000Z
 ---
 
